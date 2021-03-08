@@ -44,7 +44,7 @@ public class BreakoutPanel extends JPanel {
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
-                paddle.x = e.getX()-paddle.width/2;
+                paddle.x = e.getX() - paddle.width / 2;
             }
         });
         setFocusable(true);
@@ -72,7 +72,7 @@ public class BreakoutPanel extends JPanel {
             flipped = true;
         }
         if (proj.intersectsLine(bottomBorder)) ball = new Ball();
-        for (int i = 0; i<bricks.size(); i++) {
+        for (int i = 0; i < bricks.size(); i++) {
             Brick b = bricks.get(i);
             if (b.intersects(proj)) {
                 bricks.remove(i);
@@ -103,6 +103,7 @@ public class BreakoutPanel extends JPanel {
                 b.draw(g2);
             }
         }
+        showMessage("Hello, Breakout", g2);
     }
 
     private Color randomColor() {
@@ -111,5 +112,13 @@ public class BreakoutPanel extends JPanel {
         int b = (int) (Math.random() * 256);
         Color c = new Color(r, g, b, 128);
         return c;
+    }
+
+    public void showMessage(String s, Graphics2D g2) {
+        Font font = new Font("SansSerif", Font.BOLD + Font.ITALIC, 40);
+        Rectangle2D textBox = font.getStringBounds(s, g2.getFontRenderContext());
+        g2.setFont(font);
+        g2.setColor(new Color(0, 0, 0, 64));
+        g2.drawString(s, 50, 50);
     }
 }
