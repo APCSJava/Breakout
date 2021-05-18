@@ -52,7 +52,7 @@ public class Ball extends Ellipse2D.Double {
     /**
      * Projects the location of the ball on the next update.
      *
-     * @return a ball located where this would be on next update
+     * @return a rectangle located where this would be on next update
      */
     public Rectangle2D.Double project() {
         return new Rectangle2D.Double(x+speed[0], y+speed[1], width, height);
